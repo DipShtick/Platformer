@@ -10,7 +10,7 @@ public class HPbonus : MonoBehaviour
         bonus = 25f;
     }
 
-    void OnTriggerEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.tag == "Player")
         {
