@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HPbonus : MonoBehaviour
+public class hpBonus : MonoBehaviour
 {
     float bonus;
     void Awake()
