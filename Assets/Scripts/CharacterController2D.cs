@@ -44,12 +44,23 @@ public class CharacterController2D : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    void OnTriggerEnter2D(Collider2D col)
     {
-        //if the input is moving the player right and the player is facing left...
-        
-        // Otherwise if the input is moving the player left and the player is facing right...
-        
+        if(col.gameObject.tag == "Star")
+        {
+            Destroy(col.gameObject);
+            gameObject.tag = "PowerUp";
+            gameObject.GetComponent<Renderer>().material.color = Color.green;
+
+            StartCoroutine(Reset());
+        }
+    }
+
+    IEnumerator Reset()
+    {
+        yield return new WaitForSeconds(5f);
+        gameObject.tag = "Player";
+        gameObject.GetComponent<Renderer>().material.color = Color.white;
     }
 
     void Flip()

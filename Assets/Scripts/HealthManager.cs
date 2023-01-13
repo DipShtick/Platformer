@@ -11,6 +11,7 @@ public class HealthManager : MonoBehaviour
     {
         HP = MaxHP;
         _anim = GetComponent<Animator>();
+        oof = GetComponent<AudioSource>();
     }
 
     Animator _anim;
@@ -21,6 +22,7 @@ public class HealthManager : MonoBehaviour
     }
 
     public Slider sld;
+    AudioSource oof;
     public void TakeDamage(float amount)
     {
         HP -= amount;
@@ -30,7 +32,13 @@ public class HealthManager : MonoBehaviour
             HP = 0;
             Die();
         }
+        oof.Play();
         
+        CalculateHP();
+    }
+
+    void CalculateHP()
+    {
         sld.value = HP / MaxHP;
     }
 
@@ -40,5 +48,7 @@ public class HealthManager : MonoBehaviour
         {
             HP += amount;
         }
+        
+        CalculateHP();
     }
 }
